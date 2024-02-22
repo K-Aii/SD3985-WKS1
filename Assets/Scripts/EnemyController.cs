@@ -19,7 +19,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //timer = changeTime;
+        timer = changeTime;
         anim = GetComponent<Animator>();
     }
 
@@ -30,6 +30,7 @@ public class EnemyController : MonoBehaviour
         if (timer < 0)
         {
             direction = -direction;
+            speed = -speed;
             timer = changeTime;
         }
     }
