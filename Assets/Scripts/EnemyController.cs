@@ -15,6 +15,8 @@ public class EnemyController : MonoBehaviour
 
     Animator anim;
 
+    public bool broken = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,8 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if (!broken) { return;  }
+
         timer -= Time.deltaTime;
 
         if (timer < 0)
@@ -37,6 +41,8 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!broken) { return; }
+
         Vector2 position = rb.position;
 
         if (vertical)
@@ -54,6 +60,12 @@ public class EnemyController : MonoBehaviour
 
 
         rb.MovePosition(position);
+    }
+
+    public void Fix()
+    {
+        broken = false;
+        rb.simulated = false;
     }
 
     void OnCollisionEnter2D(Collision2D other)
