@@ -66,6 +66,8 @@ public class EnemyController : MonoBehaviour
     {
         broken = false;
         rb.simulated = false;
+        anim.SetTrigger("Fixed");
+
     }
 
     void OnCollisionEnter2D(Collision2D other)
