@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HealthCollectible : MonoBehaviour
 {
+    public AudioClip collectedSound;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //GameObject ruby = GameObject.Find("Ruby");
@@ -15,6 +17,7 @@ public class HealthCollectible : MonoBehaviour
             {
                 controller.ChangeHealth(1);
                 Destroy(this.gameObject);
+                controller.PlaySound(collectedSound);
             }
             else {
                 print("HP is full.");

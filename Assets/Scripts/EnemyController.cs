@@ -17,6 +17,9 @@ public class EnemyController : MonoBehaviour
 
     public bool broken = true;
     public ParticleSystem smokeEffect;
+    
+    AudioSource audioSource;
+    public AudioClip fixedSound;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +27,7 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         timer = changeTime;
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -69,6 +73,8 @@ public class EnemyController : MonoBehaviour
         rb.simulated = false;
         anim.SetTrigger("Fixed");
         smokeEffect.Stop();
+        audioSource.loop = false;
+        audioSource.PlayOneShot(fixedSound);
 
     }
 
